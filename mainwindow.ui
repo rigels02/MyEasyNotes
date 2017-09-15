@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MyEasyNotes</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLineEdit" name="edSearch">
+        <property name="font">
+         <font>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnSearch">
+        <property name="font">
+         <font>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Search</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="Lstatus">
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Status line</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QListWidget" name="listWidget">
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="btnAdd">
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Add</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnUpdate">
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Update</string>
+        </property>
+        <property name="shortcut">
+         <string>Return</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnDelete">
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Delete</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>500</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionRest_Server"/>
+    <addaction name="separator"/>
+    <addaction name="actionImport_text_files"/>
+    <addaction name="actionExport_Json_file"/>
+    <addaction name="actionImport_Json_file"/>
+    <addaction name="separator"/>
+    <addaction name="actionSort_by_Title"/>
+    <addaction name="actionSort_by_Date"/>
+    <addaction name="actionSort_by_Date_Last_first"/>
+    <addaction name="separator"/>
+    <addaction name="actionDelete_ALL"/>
+   </widget>
+   <addaction name="menuTools"/>
+  </widget>
+  <action name="actionImport_text_files">
+   <property name="text">
+    <string>Import text files</string>
+   </property>
+  </action>
+  <action name="actionExport_Json_file">
+   <property name="text">
+    <string>Export Json file</string>
+   </property>
+  </action>
+  <action name="actionImport_Json_file">
+   <property name="text">
+    <string>Import Json file</string>
+   </property>
+  </action>
+  <action name="actionDelete_ALL">
+   <property name="text">
+    <string>Delete ALL!</string>
+   </property>
+  </action>
+  <action name="actionSort_by_Title">
+   <property name="text">
+    <string>Sort by Title</string>
+   </property>
+  </action>
+  <action name="actionSort_by_Date">
+   <property name="text">
+    <string>Sort by Date</string>
+   </property>
+  </action>
+  <action name="actionSort_by_Date_Last_first">
+   <property name="text">
+    <string>Sort by Date (Last first) </string>
+   </property>
+  </action>
+  <action name="actionRest_Server">
+   <property name="text">
+    <string>Data Server</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
