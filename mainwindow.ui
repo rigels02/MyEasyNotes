@@ -134,6 +134,7 @@
     <addaction name="actionSort_by_Date_Last_first"/>
     <addaction name="separator"/>
     <addaction name="actionDelete_ALL"/>
+    <addaction name="actionApp_Version"/>
    </widget>
    <addaction name="menuTools"/>
   </widget>
@@ -175,6 +176,11 @@
   <action name="actionRest_Server">
    <property name="text">
     <string>Data Server</string>
+   </property>
+  </action>
+  <action name="actionApp_Version">
+   <property name="text">
+    <string>App Version</string>
    </property>
   </action>
  </widget>

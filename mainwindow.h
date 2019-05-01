@@ -65,6 +65,8 @@ private slots:
     void on_dataServerReturn();
 
 
+    void on_actionApp_Version_triggered();
+
 private:
     Ui::MainWindow *ui;
     DataServerWin *dataServerWin;

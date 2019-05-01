@@ -403,3 +403,8 @@ void MainWindow::on_dataServerReturn()
 }
 
 
+
+void MainWindow::on_actionApp_Version_triggered()
+{
+    QMessageBox::information(this,"Info",QString("Ver. ")+APP_VERSION,QMessageBox::Ok);
+}

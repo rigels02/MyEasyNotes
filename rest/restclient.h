@@ -7,7 +7,7 @@
 
 /**
  * @brief The RestClient class
- * Used to consume restful services exposed by noteBookJPA spring-boot application
+ * Used to consume restful services exposed by noteBookJPA spring-boot application.
  */
 class RestClient
 {
