@@ -13,7 +13,8 @@ DataServerWin::DataServerWin(QWidget *parent, NotesRepo *repo) :
     ui->progressBar->setVisible(false);
     this->repo = repo;
     this->schema="http";
-    m_client =0;
+    this->setAttribute(Qt::WA_DeleteOnClose,true);
+    m_client =nullptr;
     getProperties();
 
 }
@@ -21,7 +22,7 @@ DataServerWin::DataServerWin(QWidget *parent, NotesRepo *repo) :
 DataServerWin::~DataServerWin()
 {
     delete ui;
-    if(m_client!=0)
+    if(m_client!=nullptr)
         delete m_client;
 }
 
@@ -52,12 +53,14 @@ to enable it again:
         event->ignore();
         return;
     }
-    emit DataServerWinReturn();
+    event->accept();
+    emit DataServerWinCloseAndReturn();
+
 }
 
 void DataServerWin::updateButtonsStatus()
 {
-    if(m_client!=0){
+    if(m_client!=nullptr){
         if(m_client->busyOnRequest()){
             ui->btnAcceptHostData->setEnabled(false);
             ui->btnReceiveFromServer->setEnabled(false);
@@ -109,7 +112,7 @@ void DataServerWin::hideBusyUpdateButtonsStatus(QString msg){
       updateButtonsStatus();
 }
 void DataServerWin::requestAndCompareDataWithRemote(){
-    if(repo==0) return;
+    if(repo==nullptr) return;
 
     ui->lblStatus->setText("");
     QDateTime localModTime = repo->getLastModifyTime();
@@ -172,7 +175,7 @@ void DataServerWin::requestAndCompareDataWithRemote(){
 
 bool DataServerWin::isBusyOnRequest()
 {
-    if(m_client!= 0){
+    if(m_client!= nullptr){
         bool busy = m_client->busyOnRequest();
        return  busy;
     }
@@ -190,7 +193,7 @@ int DataServerWin::compareDateTimes(QDateTime t1, QDateTime t2){
 }
 void DataServerWin::on_btnSendToServer_clicked()
 {
-   if(repo == 0) return;
+   if(repo == nullptr) return;
    QList<Note> notes= Header::convertINotesList(repo->finaAll());
    NotesBook book;
    book.setId(0);
@@ -216,7 +219,7 @@ void DataServerWin::on_btnSendToServer_clicked()
 
 void DataServerWin::on_btnReceiveFromServer_clicked()
 {
-    if(repo == 0) return;
+    if(repo == nullptr) return;
 
     m_client = new RestClient(schema,host,port,baseUrl);
     bool ok;
@@ -248,7 +251,7 @@ void DataServerWin::on_btnAcceptHostData_clicked()
 
 void DataServerWin::on_btnAbort_clicked()
 {
-    if(m_client!=0){
+    if(m_client!=nullptr){
 
         m_client->abort();
     }

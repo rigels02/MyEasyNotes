@@ -30,7 +30,7 @@ public:
     bool isBusyOnRequest();
 
 signals:
-    void DataServerWinReturn();
+    void DataServerWinCloseAndReturn();
 
 private slots:
     void on_btnSendToServer_clicked();

@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     repo = NotesRepo();
     filterStatus=false;
-    dataServerWin=0;
+    dataServerWin=nullptr;
 
     updateView();
 }
@@ -91,7 +91,7 @@ int MainWindow::getCurrentItemIdx(){
 int MainWindow::getCurrentDataItemIdx()
 {
     QListWidgetItem* item = ui->listWidget->currentItem();
-    if(item==0) return -1;
+    if(item==nullptr) return -1;
     int idx= getCurrentItemIdx();
     if(idx == -1) return -1;
     return item->data(Qt::UserRole).toInt(); //get keeped Note's Id
@@ -378,9 +378,9 @@ bool MainWindow::isValidSearchString(){
 void MainWindow::on_actionRest_Server_triggered()
 {
 
-    if(dataServerWin==0){
-   dataServerWin = new DataServerWin(0,&repo);
-   connect(dataServerWin,SIGNAL(DataServerWinReturn()),this,SLOT(on_dataServerReturn()));
+    if(dataServerWin==nullptr){
+   dataServerWin = new DataServerWin(nullptr,&repo);
+   connect(dataServerWin,SIGNAL(DataServerWinCloseAndReturn()),this,SLOT(on_dataServerReturn()));
      dataServerWin->setWindowModality(Qt::ApplicationModal);
      dataServerWin->show();
      dataServerWin->requestAndCompareDataWithRemote();
@@ -394,8 +394,10 @@ void MainWindow::on_actionRest_Server_triggered()
 void MainWindow::on_dataServerReturn()
 {
   if( !dataServerWin->isBusyOnRequest() ){
-  delete dataServerWin;
-    dataServerWin=0;
+  //disconnect(dataServerWin,SIGNAL(DataServerWinReturn()),this,SLOT(on_dataServerReturn()));
+
+  //delete dataServerWin; //Deleted after dataServerWin.CloseEvent processed.
+    dataServerWin=nullptr;
   }else{
     dataServerWin->hide();
   }

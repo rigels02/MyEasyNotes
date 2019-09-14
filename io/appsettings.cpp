@@ -25,7 +25,7 @@ void AppSettings::reset(){
 }
 QFile* AppSettings::openFileToRead(){
     QFile *fi =  new QFile(this->fileName);
-    if(!fi->exists()) return 0;
+    if(!fi->exists()) return nullptr;
     fi->open(QFile::ReadOnly);
 
     return fi;
@@ -39,7 +39,7 @@ void AppSettings::appendRec(QString key, QString value){
 }
 QMap<QString, QString> AppSettings::readAllKeys(){
     QFile *fi=openFileToRead();
-    if(fi != 0 ){
+    if(fi != nullptr ){
      QTextStream ds(fi);
      QString all= ds.readAll();
       QStringList lines= all.split("\n");
