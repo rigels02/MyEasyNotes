@@ -260,7 +260,7 @@ void MainWindow::on_actionExport_Json_file_triggered()
     book.setNotes(notes);
     expo.expoNotesBookJson(filename.at(0),book);
     //expo.expoJson(filename.at(0),notes);
-    QMessageBox::information(this,"Export","Export completed!");
+    QMessageBox::information(this,"Export",QString("Export completed to file: %0 !").arg(filename.at(0)));
 }
 }
 
@@ -296,7 +296,7 @@ void MainWindow::on_actionImport_Json_file_triggered()
             updateView();
             QMessageBox::information(
                         this,"Import",
-                        QString("Import of %0 items completed!").arg(book.getNotes().size())
+                        QString("Import of %0 items completed from file %1!").arg(book.getNotes().size()).arg(filename.at(0))
                         );
         }
     }
